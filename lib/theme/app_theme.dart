@@ -18,7 +18,7 @@ class AppTheme {
 
     return base.copyWith(
       cardTheme: CardThemeData(
-        color: Colors.white,
+        color: Color(0xFFf5faf9),
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -41,6 +41,7 @@ class AppTheme {
         bodyColor: const Color(0xFF072318),
       ),
       dividerColor: Colors.black.withValues(alpha: 0.04),
+      iconTheme: base.iconTheme.copyWith(color: const Color(0xFF072318)),
     );
   }
 
@@ -80,6 +81,7 @@ class AppTheme {
         bodyColor: Colors.white,
       ),
       dividerColor: Colors.white.withValues(alpha: 0.08),
+      iconTheme: base.iconTheme.copyWith(color: Colors.white),
     );
   }
 }

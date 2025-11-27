@@ -12,7 +12,7 @@ class BoycottCompanyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final headerColor = theme.brightness == Brightness.light
-        ? theme.colorScheme.primary.withValues(alpha: 0.07)
+        ? theme.colorScheme.primary.withValues(alpha: 0.08)
         : Colors.white.withValues(alpha: 0.04);
     final alternatives = company.alternatives;
 
@@ -176,7 +176,11 @@ class _AlternativeRow extends StatelessWidget {
   static Widget _flagOrPlaceholder(String code) {
     final normalized = code.trim();
     if (normalized.length != 2) {
-      return const SizedBox(width: 28, height: 18);
+      return SizedBox(
+        width: 28,
+        height: 18,
+        child: normalized == "OSS" ? Icon(Icons.code) : null,
+      );
     }
 
     return CountryFlag.fromCountryCode(

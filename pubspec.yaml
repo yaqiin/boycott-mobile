@@ -16,6 +16,7 @@ dependencies:
   country_flags: ^4.1.0
   lucide_icons_flutter: ^3.1.6
   flutter_easy_translate: ^1.0.4
+  skeletonizer: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:
