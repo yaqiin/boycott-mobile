@@ -17,6 +17,8 @@ dependencies:
   lucide_icons_flutter: ^3.1.6
   flutter_easy_translate: ^1.0.4
   skeletonizer: ^2.1.0+1
+  http: ^1.6.0
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
