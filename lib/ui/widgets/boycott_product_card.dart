@@ -1,10 +1,10 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 
-import '../models/boycott_company.dart';
+import '../../models/boycott_company.dart';
 
-class BoycottCompanyCard extends StatelessWidget {
-  const BoycottCompanyCard({super.key, required this.company});
+class BoycottProductCard extends StatelessWidget {
+  const BoycottProductCard({super.key, required this.company});
 
   final BoycottCompany company;
 

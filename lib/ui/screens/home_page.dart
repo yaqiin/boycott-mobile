@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/boycott_company.dart';
-import '../widgets/boycott_company_card.dart';
+import '../widgets/boycott_product_card.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
@@ -74,7 +74,7 @@ class MyHomePage extends StatelessWidget {
           final company = _companies[index];
           return Padding(
             padding: const EdgeInsets.only(bottom: 16),
-            child: BoycottCompanyCard(company: company),
+            child: BoycottProductCard(company: company),
           );
         },
       ),
