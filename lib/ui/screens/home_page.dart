@@ -63,14 +63,8 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(title: Text(title), centerTitle: false),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: _companies.length + 1,
+        itemCount: _companies.length,
         itemBuilder: (context, index) {
-          if (index == _companies.length) {
-            return SizedBox(
-              width: 24,
-              child: Center(child: CircularProgressIndicator()),
-            );
-          }
           final company = _companies[index];
           return Padding(
             padding: const EdgeInsets.only(bottom: 16),
