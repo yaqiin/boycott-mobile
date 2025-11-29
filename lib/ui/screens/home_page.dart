@@ -1,79 +1,31 @@
+import 'package:boycott/ui/widgets/loading_categories_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../models/boycott_company.dart';
+import '../../features/categories/cubit/categories_cubit.dart';
+import '../../features/products/cubit/products_cubit.dart';
 import '../widgets/boycott_product_card.dart';
+import '../widgets/loading_products_widget.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
-  List<BoycottCompany> get _companies => const [
-    BoycottCompany(
-      name: 'Google Maps',
-      category: 'Technology',
-      country: 'United States',
-      countryCode: 'US',
-      alternatives: [
-        BoycottAlternative(
-          name: '2GIS',
-          link: 'https://2gis.ae/',
-          countryCode: 'RU',
-          country: 'Russia',
-        ),
-        BoycottAlternative(
-          name: 'Open Street Map',
-          link: 'https://www.openstreetmap.org/',
-          countryCode: 'GB',
-          country: 'United Kingdom',
-        ),
-      ],
-    ),
-    BoycottCompany(
-      name: 'Adobe Photoshop',
-      category: 'Technology',
-      country: 'United States',
-      countryCode: 'US',
-      alternatives: [
-        BoycottAlternative(
-          name: 'GIMP',
-          link: 'https://www.gimp.org/',
-          countryCode: 'OSS',
-          country: 'Open Source',
-        ),
-        BoycottAlternative(
-          name: 'Krita',
-          link: 'https://krita.org/',
-          countryCode: 'OSS',
-          country: 'Open Source',
-        ),
-        BoycottAlternative(
-          name: 'Affinity Photo',
-          link: 'https://affinity.serif.com/en-us/photo/',
-          countryCode: 'GB',
-          country: 'United Kingdom',
-        ),
-      ],
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title), centerTitle: false),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: _companies.length,
-        itemBuilder: (context, index) {
-          final company = _companies[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: BoycottProductCard(company: company),
-          );
-        },
+      body: Column(
+        children: const [
+          SizedBox(height: 12),
+          _CategoryFilter(),
+          SizedBox(height: 12),
+          Expanded(child: _ProductsSection()),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
-        destinations: [
+        destinations: const [
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
@@ -91,6 +43,166 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CategoryFilter extends StatelessWidget {
+  const _CategoryFilter();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CategoriesCubit, CategoriesState>(
+      builder: (context, state) {
+        if (state is CategoriesLoading) {
+          return const LoadingCategoriesWidget();
+        }
+
+        if (state is CategoriesFailure) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Failed to load categories: ${state.message}',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          );
+        }
+
+        if (state is! CategoriesLoaded || state.categories.isEmpty) {
+          return const SizedBox();
+        }
+
+        final selectedId = state.selectedCategoryId;
+
+        return SizedBox(
+          height: 56,
+          child: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            scrollDirection: Axis.horizontal,
+            itemCount: state.categories.length,
+            separatorBuilder: (_, _) => const SizedBox(width: 8),
+            itemBuilder: (context, index) {
+              final category = state.categories[index];
+              final selected = category.id == selectedId;
+              return FilterChip(
+                label: Text(category.name),
+                selected: selected,
+                onSelected: (value) {
+                  if (!value) {
+                    context.read<CategoriesCubit>().selectCategory(null);
+                    context.read<ProductsCubit>().loadProducts();
+                  } else {
+                    context.read<CategoriesCubit>().selectCategory(category.id);
+                    context.read<ProductsCubit>().loadProducts(
+                      categoryId: category.id,
+                    );
+                  }
+                },
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _ProductsSection extends StatelessWidget {
+  const _ProductsSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProductsCubit, ProductsState>(
+      builder: (context, state) {
+        if (state is ProductsLoading) {
+          return const LoadingProductWidget();
+        }
+
+        if (state is ProductsFailure) {
+          final categoryId = state.categoryId;
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Could not load products.\n${state.message}',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  onPressed: () {
+                    final filterId = (categoryId?.isEmpty ?? true)
+                        ? null
+                        : categoryId;
+                    context.read<ProductsCubit>().loadProducts(
+                      categoryId: filterId,
+                    );
+                  },
+                  child: const Text('Retry'),
+                ),
+              ],
+            ),
+          );
+        }
+
+        if (state is ProductsSuccess) {
+          if (state.products.isEmpty) {
+            final message = state.categoryId == null
+                ? 'No products found.'
+                : 'No products found in this category.';
+            return Center(child: Text(message));
+          }
+
+          final theme = Theme.of(context);
+          final showLoadMoreRow =
+              state.hasNextPage ||
+              state.isLoadingMore ||
+              state.loadMoreError != null;
+          final itemCount = state.products.length + (showLoadMoreRow ? 1 : 0);
+
+          return ListView.builder(
+            padding: const EdgeInsets.all(16),
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              if (index < state.products.length) {
+                final company = state.products[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: BoycottProductCard(company: company),
+                );
+              }
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: Column(
+                  children: [
+                    if (state.loadMoreError != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          state.loadMoreError!,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.error,
+                          ),
+                        ),
+                      ),
+                    if (state.isLoadingMore)
+                      const CircularProgressIndicator()
+                    else if (state.hasNextPage)
+                      OutlinedButton(
+                        onPressed: () =>
+                            context.read<ProductsCubit>().loadMore(),
+                        child: const Text('Load more'),
+                      ),
+                  ],
+                ),
+              );
+            },
+          );
+        }
+
+        return const SizedBox();
+      },
     );
   }
 }

@@ -15,7 +15,7 @@ class BoycottAlternative {
     return BoycottAlternative(
       name: json['name'] as String,
       link: json['link'] as String,
-      countryCode: json['country_code'] as String,
+      countryCode: json['countryCode'] as String,
       country: json['country'] as String,
     );
   }
@@ -50,9 +50,9 @@ class BoycottCompany {
 
     return BoycottCompany(
       name: json['name'] as String,
-      category: json['category'] as String,
+      category: json['category'] ?? "",
       country: json['country'] as String,
-      countryCode: json['country_code'] as String,
+      countryCode: json['countryCode'] as String,
       alternatives: alternativesJson
           ?.map(
             (altJson) =>
