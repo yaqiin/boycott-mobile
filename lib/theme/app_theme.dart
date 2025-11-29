@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const Color _seedColor = Color(0xFF0F9D58);
-  static const Color _lightSurface = Color(0xFFF1FBF4);
+  static const Color _lightBackground = Color(0xFFEFF7F2);
+  static const Color _lightSurface = Color(0xFFE4F0E8);
+  static const Color _lightCard = Color(0xFFECF6F0);
+  static const Color _lightAccent = Color(0xFF0B4023);
   static const Color _darkSurface = Color(0xFF071410);
 
   static ThemeData light() {
@@ -11,37 +14,58 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: _seedColor,
         brightness: Brightness.light,
+        primary: const Color(0xFF0F5C38),
+        onPrimary: Colors.white,
+        secondary: const Color(0xFF1D5A3C),
+        surface: _lightCard,
       ),
-      scaffoldBackgroundColor: const Color(0xFFF7FCF9),
+      scaffoldBackgroundColor: _lightBackground,
       useMaterial3: true,
     );
 
     return base.copyWith(
-      cardTheme: CardThemeData(
-        color: Color(0xFFf5faf9),
+      appBarTheme: AppBarTheme(
+        backgroundColor: _lightBackground,
         elevation: 0,
+        foregroundColor: _lightAccent,
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: _lightSurface,
+        indicatorColor: const Color(0xFFD2E8DD),
+        iconTheme: WidgetStateProperty.all(IconThemeData(color: _lightAccent)),
+        labelTextStyle: WidgetStateProperty.all(
+          base.textTheme.labelMedium?.copyWith(
+            color: _lightAccent,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+      cardTheme: CardThemeData(
+        color: _lightCard,
+        elevation: 0.3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(color: Colors.black.withValues(alpha: 0.04)),
+          side: BorderSide(color: Colors.black.withValues(alpha: 0.03)),
         ),
         clipBehavior: Clip.antiAlias,
       ),
       chipTheme: base.chipTheme.copyWith(
-        side: BorderSide.none,
-        backgroundColor: _lightSurface,
+        side: BorderSide(color: Colors.black.withValues(alpha: 0.05)),
+        backgroundColor: Colors.white,
         labelStyle: base.textTheme.labelLarge?.copyWith(
-          color: base.colorScheme.onSurface,
+          color: _lightAccent,
           fontWeight: FontWeight.w600,
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       ),
       textTheme: base.textTheme.apply(
-        displayColor: const Color(0xFF072318),
-        bodyColor: const Color(0xFF072318),
+        displayColor: _lightAccent,
+        bodyColor: _lightAccent,
       ),
       dividerColor: Colors.black.withValues(alpha: 0.04),
-      iconTheme: base.iconTheme.copyWith(color: const Color(0xFF072318)),
+      iconTheme: base.iconTheme.copyWith(color: _lightAccent),
+      scaffoldBackgroundColor: _lightBackground,
     );
   }
 
