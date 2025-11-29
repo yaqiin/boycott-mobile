@@ -12,7 +12,7 @@ class BoycottProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final headerColor = theme.brightness == Brightness.light
-        ? theme.colorScheme.primary.withValues(alpha: 0.08)
+        ? theme.colorScheme.surfaceContainerHighest
         : Colors.white.withValues(alpha: 0.04);
     final alternatives = company.alternatives;
 

@@ -2,23 +2,26 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const Color _seedColor = Color(0xFF0F9D58);
-  static const Color _lightBackground = Color(0xFFEFF7F2);
-  static const Color _lightSurface = Color(0xFFE4F0E8);
-  static const Color _lightCard = Color(0xFFECF6F0);
-  static const Color _lightAccent = Color(0xFF0B4023);
+  static const Color _lightBackground = Color(0xFFEFF7F4);
+  static const Color _lightCard = Color(0xFFFCFEFD);
+  static const Color _lightCardHeader = Color(0xFFD6F0EA);
+  static const Color _lightAccent = Color(0xFF0A452C);
+  static const Color _lightAccentMuted = Color(0xFF14643D);
   static const Color _darkSurface = Color(0xFF071410);
 
   static ThemeData light() {
+    final scheme = ColorScheme.fromSeed(
+      seedColor: _seedColor,
+      brightness: Brightness.light,
+      primary: _lightAccentMuted,
+      onPrimary: Colors.white,
+      secondary: _lightAccent,
+      surface: _lightCard,
+    ).copyWith(surfaceContainerHighest: _lightCardHeader);
+
     final base = ThemeData(
       brightness: Brightness.light,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: _seedColor,
-        brightness: Brightness.light,
-        primary: const Color(0xFF0F5C38),
-        onPrimary: Colors.white,
-        secondary: const Color(0xFF1D5A3C),
-        surface: _lightCard,
-      ),
+      colorScheme: scheme,
       scaffoldBackgroundColor: _lightBackground,
       useMaterial3: true,
     );
@@ -30,8 +33,8 @@ class AppTheme {
         foregroundColor: _lightAccent,
       ),
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: _lightSurface,
-        indicatorColor: const Color(0xFFD2E8DD),
+        backgroundColor: _lightBackground,
+        indicatorColor: const Color(0xFFDCEFE6),
         iconTheme: WidgetStateProperty.all(IconThemeData(color: _lightAccent)),
         labelTextStyle: WidgetStateProperty.all(
           base.textTheme.labelMedium?.copyWith(
@@ -42,16 +45,17 @@ class AppTheme {
       ),
       cardTheme: CardThemeData(
         color: _lightCard,
-        elevation: 0.3,
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(color: Colors.black.withValues(alpha: 0.03)),
+          side: BorderSide(color: Colors.black.withValues(alpha: 0.04)),
         ),
         clipBehavior: Clip.antiAlias,
       ),
       chipTheme: base.chipTheme.copyWith(
         side: BorderSide(color: Colors.black.withValues(alpha: 0.05)),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFFAFDFC),
+        selectedColor: const Color(0xFFD5EBD9),
         labelStyle: base.textTheme.labelLarge?.copyWith(
           color: _lightAccent,
           fontWeight: FontWeight.w600,
