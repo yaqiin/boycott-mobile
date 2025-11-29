@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         title: 'Boycott',
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.light,
         home: const MyHomePage(title: 'Yaqiin Boycott'),
       ),
     );
