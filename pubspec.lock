@@ -170,10 +170,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_easy_translate
-      sha256: "83f1935c7e1b25e6224fc656b7c96399ba9c2aa7956180f4917487c251ce6d1a"
+      sha256: a7e2a35e947b3569cddf127cd49dc497d5f45a830f6ad2c2b110dcd2e31ae26f
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -190,6 +190,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -300,10 +305,10 @@ packages:
     dependency: "direct main"
     description:
       name: lucide_icons_flutter
-      sha256: c2b806da2b01fd7df99bd97e9f92ad0b6726f802a97c67812bc50b324a745a7e
+      sha256: dbe8edc3811d66793ad0fca16203c191b4c964536b82b2a510557bdf1c19507e
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.6"
+    version: "3.1.7"
   matcher:
     dependency: transitive
     description:

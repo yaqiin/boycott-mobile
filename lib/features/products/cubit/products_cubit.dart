@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/api/api_exception.dart';
 import '../../../models/boycott_company.dart';
 import '../data/models/product_page.dart';
 import '../data/repositories/products_repository.dart';
@@ -22,7 +24,8 @@ class ProductsCubit extends Cubit<ProductsState> {
       );
       emit(_successFromPage(page, categoryId));
     } catch (error) {
-      emit(ProductsFailure(error.toString(), categoryId: categoryId));
+      _logError(error);
+      emit(ProductsFailure(_mapErrorToMessage(error), categoryId: categoryId));
     }
   }
 
@@ -51,10 +54,11 @@ class ProductsCubit extends Cubit<ProductsState> {
         ),
       );
     } catch (error) {
+      _logError(error);
       emit(
         currentState.copyWith(
           isLoadingMore: false,
-          loadMoreError: error.toString(),
+          loadMoreError: _mapErrorToMessage(error),
         ),
       );
     }
@@ -68,5 +72,22 @@ class ProductsCubit extends Cubit<ProductsState> {
       categoryId: categoryId,
       isLoadingMore: false,
     );
+  }
+}
+
+String _mapErrorToMessage(
+  Object error, {
+  String fallback = 'An error occurred. Please try again.',
+}) {
+  if (error is ApiException && error.userFriendlyMessage != null) {
+    return error.userFriendlyMessage!;
+  }
+  return fallback;
+}
+
+void _logError(Object error) {
+  if (kDebugMode) {
+    // ignore: avoid_print
+    print(error);
   }
 }

@@ -10,7 +10,8 @@ import 'features/products/data/repositories/products_repository.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_page.dart';
 
-const String kApiBaseUrl = 'https://boycott.api.yaqiin.org/';
+const String kApiBaseUrl =
+    "http://localhost:3000/"; //'https://boycott.api.yaqiin.org/';
 
 final ApiService _apiService = ApiService(
   baseUrl: kApiBaseUrl,
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         title: 'Boycott',
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.dark,
         home: const MyHomePage(title: 'Yaqiin Boycott'),
       ),
     );

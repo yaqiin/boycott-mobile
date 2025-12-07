@@ -16,13 +16,27 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title), centerTitle: false),
-      body: Column(
-        children: const [
-          SizedBox(height: 12),
-          _CategoryFilter(),
-          SizedBox(height: 12),
-          Expanded(child: _ProductsSection()),
-        ],
+      body: BlocBuilder<CategoriesCubit, CategoriesState>(
+        builder: (context, categoriesState) {
+          if (categoriesState is CategoriesFailure) {
+            return _ErrorView(
+              message: categoriesState.message,
+              onRetry: () {
+                context.read<CategoriesCubit>().fetchCategories();
+                context.read<ProductsCubit>().loadProducts();
+              },
+            );
+          }
+
+          return Column(
+            children: const [
+              SizedBox(height: 12),
+              _CategoryFilter(),
+              SizedBox(height: 12),
+              Expanded(child: _ProductsSection()),
+            ],
+          );
+        },
       ),
       bottomNavigationBar: NavigationBar(
         destinations: const [
@@ -59,13 +73,7 @@ class _CategoryFilter extends StatelessWidget {
         }
 
         if (state is CategoriesFailure) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              'Failed to load categories: ${state.message}',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          );
+          return const SizedBox.shrink();
         }
 
         if (state is! CategoriesLoaded || state.categories.isEmpty) {
@@ -120,28 +128,15 @@ class _ProductsSection extends StatelessWidget {
 
         if (state is ProductsFailure) {
           final categoryId = state.categoryId;
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Could not load products.\n${state.message}',
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 12),
-                ElevatedButton(
-                  onPressed: () {
-                    final filterId = (categoryId?.isEmpty ?? true)
-                        ? null
-                        : categoryId;
-                    context.read<ProductsCubit>().loadProducts(
-                      categoryId: filterId,
-                    );
-                  },
-                  child: const Text('Retry'),
-                ),
-              ],
-            ),
+          return _ErrorView(
+            message: 'Could not load products.\n${state.message}',
+            onRetry: () {
+              final filterId = (categoryId?.isEmpty ?? true)
+                  ? null
+                  : categoryId;
+              context.read<CategoriesCubit>().fetchCategories();
+              context.read<ProductsCubit>().loadProducts(categoryId: filterId);
+            },
           );
         }
 
@@ -203,6 +198,30 @@ class _ProductsSection extends StatelessWidget {
 
         return const SizedBox();
       },
+    );
+  }
+}
+
+class _ErrorView extends StatelessWidget {
+  const _ErrorView({required this.message, required this.onRetry});
+
+  final String message;
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(message, textAlign: TextAlign.center),
+          ),
+          const SizedBox(height: 12),
+          ElevatedButton(onPressed: onRetry, child: const Text('Retry')),
+        ],
+      ),
     );
   }
 }

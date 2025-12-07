@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart' hide Category;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/api/api_exception.dart';
 import '../data/models/category.dart';
 import '../data/repositories/categories_repository.dart';
 
@@ -30,7 +32,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
         ),
       );
     } catch (error) {
-      emit(CategoriesFailure(error.toString()));
+      _logError(error);
+      emit(CategoriesFailure(_mapErrorToMessage(error)));
     }
   }
 
@@ -44,5 +47,22 @@ class CategoriesCubit extends Cubit<CategoriesState> {
         selectedCategoryId: categoryId,
       ),
     );
+  }
+}
+
+String _mapErrorToMessage(
+  Object error, {
+  String fallback = 'An error occurred. Please try again.',
+}) {
+  if (error is ApiException && error.userFriendlyMessage != null) {
+    return error.userFriendlyMessage!;
+  }
+  return fallback;
+}
+
+void _logError(Object error) {
+  if (kDebugMode) {
+    // ignore: avoid_print
+    print(error);
   }
 }
