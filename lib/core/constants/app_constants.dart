@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  static const String apiBaseUrl =
-      'http://localhost:3000/'; // 'https://boycott.api.yaqiin.org/';
+  static const String apiBaseUrl = 'https://boycott.api.yaqiin.org/';
+  //'http://localhost:3000/';
   static const String fallbackLocale = 'en';
   static const List<String> supportedLocales = [
     'en',
