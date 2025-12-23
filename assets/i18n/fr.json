@@ -1,34 +1,34 @@
 {
   "app": { "title": "Yaqiin Boycott" },
-  "nav": { "products": "Products", "why": "Why Boycott?", "settings": "Settings" },
-  "common": { "retry": "Retry" },
-  "categories": { "error": "Failed to load categories" },
+  "nav": { "products": "Produits", "why": "Pourquoi boycotter ?", "settings": "Paramètres" },
+  "common": { "retry": "Réessayer" },
+  "categories": { "error": "Échec du chargement des catégories" },
   "products": {
-    "alternatives": "Alternatives:",
-    "noAlternatives": "No suggested alternatives yet.",
-    "noProducts": "No products found.",
-    "noProductsCategory": "No products found in this category.",
-    "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "alternatives": "Alternatives :",
+    "noAlternatives": "Aucune alternative suggérée pour le moment.",
+    "noProducts": "Aucun produit trouvé.",
+    "noProductsCategory": "Aucun produit trouvé dans cette catégorie.",
+    "loadMore": "Charger plus",
+    "errorPrefix": "Impossible de charger les produits."
   },
-  "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
+  "why": { "title": "Pourquoi boycotter ?", "error": "Impossible de charger les raisons." },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Personalize your experience.",
-    "appearance": "Appearance",
-    "appearanceSubtitle": "Switch between light and dark themes.",
-    "language": "Language",
-    "languageSubtitle": "Choose your preferred language.",
-    "theme": { "light": "Light", "dark": "Dark", "system": "System" }
+    "title": "Paramètres",
+    "subtitle": "Personnalisez votre expérience.",
+    "appearance": "Apparence",
+    "appearanceSubtitle": "Basculer entre les thèmes clair et sombre.",
+    "language": "Langue",
+    "languageSubtitle": "Choisissez votre langue préférée.",
+    "theme": { "light": "Clair", "dark": "Sombre", "system": "Système" }
   },
   "languages": {
-    "en": "English",
-    "ar": "Arabic",
+    "en": "Anglais",
+    "ar": "Arabe",
     "bn": "Bengali",
-    "es": "Spanish",
-    "fr": "French",
-    "id": "Indonesian",
-    "tr": "Turkish",
-    "ur": "Urdu"
+    "es": "Espagnol",
+    "fr": "Français",
+    "id": "Indonésien",
+    "tr": "Turc",
+    "ur": "Ourdou"
   }
 }

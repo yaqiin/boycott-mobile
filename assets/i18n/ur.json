@@ -1,34 +1,34 @@
 {
-  "app": { "title": "Yaqiin Boycott" },
-  "nav": { "products": "Products", "why": "Why Boycott?", "settings": "Settings" },
-  "common": { "retry": "Retry" },
-  "categories": { "error": "Failed to load categories" },
+  "app": { "title": "یقین بائیکاٹ" },
+  "nav": { "products": "مصنوعات", "why": "کیوں بائیکاٹ کریں؟", "settings": "ترتیبات" },
+  "common": { "retry": "دوبارہ کوشش کریں" },
+  "categories": { "error": "زمرے لوڈ نہیں ہو سکے" },
   "products": {
-    "alternatives": "Alternatives:",
-    "noAlternatives": "No suggested alternatives yet.",
-    "noProducts": "No products found.",
-    "noProductsCategory": "No products found in this category.",
-    "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "alternatives": "متبادل:",
+    "noAlternatives": "ابھی کوئی متبادل تجویز نہیں کیا گیا۔",
+    "noProducts": "کوئی مصنوعات نہیں ملیں۔",
+    "noProductsCategory": "اس زمرے میں کوئی مصنوعات نہیں ملیں۔",
+    "loadMore": "مزید لوڈ کریں",
+    "errorPrefix": "مصنوعات لوڈ نہیں ہو سکیں۔"
   },
-  "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
+  "why": { "title": "کیوں بائیکاٹ کریں؟", "error": "وجوہات لوڈ نہیں ہو سکیں۔" },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Personalize your experience.",
-    "appearance": "Appearance",
-    "appearanceSubtitle": "Switch between light and dark themes.",
-    "language": "Language",
-    "languageSubtitle": "Choose your preferred language.",
-    "theme": { "light": "Light", "dark": "Dark", "system": "System" }
+    "title": "ترتیبات",
+    "subtitle": "اپنے تجربے کو شخصی بنائیں۔",
+    "appearance": "ظاہری شکل",
+    "appearanceSubtitle": "ہلکے اور گہرے تھیم کے درمیان سوئچ کریں۔",
+    "language": "زبان",
+    "languageSubtitle": "اپنی پسندیدہ زبان منتخب کریں۔",
+    "theme": { "light": "ہلکا", "dark": "گہرا", "system": "سسٹم" }
   },
   "languages": {
-    "en": "English",
-    "ar": "Arabic",
-    "bn": "Bengali",
-    "es": "Spanish",
-    "fr": "French",
-    "id": "Indonesian",
-    "tr": "Turkish",
-    "ur": "Urdu"
+    "en": "انگریزی",
+    "ar": "عربی",
+    "bn": "بنگالی",
+    "es": "ہسپانوی",
+    "fr": "فرانسیسی",
+    "id": "انڈونیشیائی",
+    "tr": "ترکی",
+    "ur": "اردو"
   }
 }

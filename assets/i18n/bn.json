@@ -1,34 +1,34 @@
 {
-  "app": { "title": "Yaqiin Boycott" },
-  "nav": { "products": "Products", "why": "Why Boycott?", "settings": "Settings" },
-  "common": { "retry": "Retry" },
-  "categories": { "error": "Failed to load categories" },
+  "app": { "title": "ইয়াকীন বয়কট" },
+  "nav": { "products": "পণ্যসমূহ", "why": "কেন বয়কট?", "settings": "সেটিংস" },
+  "common": { "retry": "পুনরায় চেষ্টা করুন" },
+  "categories": { "error": "ক্যাটাগরি লোড করা যায়নি" },
   "products": {
-    "alternatives": "Alternatives:",
-    "noAlternatives": "No suggested alternatives yet.",
-    "noProducts": "No products found.",
-    "noProductsCategory": "No products found in this category.",
-    "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "alternatives": "বিকল্প:",
+    "noAlternatives": "এখনও কোনো প্রস্তাবিত বিকল্প নেই।",
+    "noProducts": "কোনো পণ্য পাওয়া যায়নি।",
+    "noProductsCategory": "এই ক্যাটাগরিতে কোনো পণ্য নেই।",
+    "loadMore": "আরও দেখুন",
+    "errorPrefix": "পণ্য লোড করা যায়নি।"
   },
-  "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
+  "why": { "title": "কেন বয়কট?", "error": "কারণগুলো লোড করা যায়নি।" },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Personalize your experience.",
-    "appearance": "Appearance",
-    "appearanceSubtitle": "Switch between light and dark themes.",
-    "language": "Language",
-    "languageSubtitle": "Choose your preferred language.",
-    "theme": { "light": "Light", "dark": "Dark", "system": "System" }
+    "title": "সেটিংস",
+    "subtitle": "আপনার অভিজ্ঞতা ব্যক্তিগত করুন।",
+    "appearance": "দেখা",
+    "appearanceSubtitle": "লাইট ও ডার্ক থিমের মধ্যে পরিবর্তন করুন।",
+    "language": "ভাষা",
+    "languageSubtitle": "আপনার পছন্দের ভাষা নির্বাচন করুন।",
+    "theme": { "light": "লাইট", "dark": "ডার্ক", "system": "সিস্টেম" }
   },
   "languages": {
-    "en": "English",
-    "ar": "Arabic",
-    "bn": "Bengali",
-    "es": "Spanish",
-    "fr": "French",
-    "id": "Indonesian",
-    "tr": "Turkish",
-    "ur": "Urdu"
+    "en": "ইংরেজি",
+    "ar": "আরবি",
+    "bn": "বাংলা",
+    "es": "স্প্যানিশ",
+    "fr": "ফরাসি",
+    "id": "ইন্দোনেশীয়",
+    "tr": "তুর্কি",
+    "ur": "উর্দু"
   }
 }

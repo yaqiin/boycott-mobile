@@ -1,34 +1,34 @@
 {
-  "app": { "title": "Yaqiin Boycott" },
-  "nav": { "products": "Products", "why": "Why Boycott?", "settings": "Settings" },
-  "common": { "retry": "Retry" },
-  "categories": { "error": "Failed to load categories" },
+  "app": { "title": "Yaqiin Boikot" },
+  "nav": { "products": "Produk", "why": "Mengapa Boikot?", "settings": "Pengaturan" },
+  "common": { "retry": "Coba lagi" },
+  "categories": { "error": "Gagal memuat kategori" },
   "products": {
-    "alternatives": "Alternatives:",
-    "noAlternatives": "No suggested alternatives yet.",
-    "noProducts": "No products found.",
-    "noProductsCategory": "No products found in this category.",
-    "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "alternatives": "Alternatif:",
+    "noAlternatives": "Belum ada alternatif yang disarankan.",
+    "noProducts": "Produk tidak ditemukan.",
+    "noProductsCategory": "Tidak ada produk dalam kategori ini.",
+    "loadMore": "Muat lebih banyak",
+    "errorPrefix": "Gagal memuat produk."
   },
-  "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
+  "why": { "title": "Mengapa Boikot?", "error": "Alasan tidak dapat dimuat." },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Personalize your experience.",
-    "appearance": "Appearance",
-    "appearanceSubtitle": "Switch between light and dark themes.",
-    "language": "Language",
-    "languageSubtitle": "Choose your preferred language.",
-    "theme": { "light": "Light", "dark": "Dark", "system": "System" }
+    "title": "Pengaturan",
+    "subtitle": "Personalisasi pengalaman Anda.",
+    "appearance": "Tampilan",
+    "appearanceSubtitle": "Beralih antara tema terang dan gelap.",
+    "language": "Bahasa",
+    "languageSubtitle": "Pilih bahasa pilihan Anda.",
+    "theme": { "light": "Terang", "dark": "Gelap", "system": "Sistem" }
   },
   "languages": {
-    "en": "English",
-    "ar": "Arabic",
+    "en": "Inggris",
+    "ar": "Arab",
     "bn": "Bengali",
-    "es": "Spanish",
-    "fr": "French",
-    "id": "Indonesian",
-    "tr": "Turkish",
+    "es": "Spanyol",
+    "fr": "Prancis",
+    "id": "Indonesia",
+    "tr": "Turki",
     "ur": "Urdu"
   }
 }

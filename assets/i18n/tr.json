@@ -1,34 +1,34 @@
 {
-  "app": { "title": "Yaqiin Boycott" },
-  "nav": { "products": "Products", "why": "Why Boycott?", "settings": "Settings" },
-  "common": { "retry": "Retry" },
-  "categories": { "error": "Failed to load categories" },
+  "app": { "title": "Yaqiin Boykot" },
+  "nav": { "products": "Ürünler", "why": "Neden Boykot?", "settings": "Ayarlar" },
+  "common": { "retry": "Yeniden dene" },
+  "categories": { "error": "Kategoriler yüklenemedi" },
   "products": {
-    "alternatives": "Alternatives:",
-    "noAlternatives": "No suggested alternatives yet.",
-    "noProducts": "No products found.",
-    "noProductsCategory": "No products found in this category.",
-    "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "alternatives": "Alternatifler:",
+    "noAlternatives": "Henüz önerilen alternatif yok.",
+    "noProducts": "Ürün bulunamadı.",
+    "noProductsCategory": "Bu kategoride ürün bulunamadı.",
+    "loadMore": "Daha fazla yükle",
+    "errorPrefix": "Ürünler yüklenemedi."
   },
-  "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
+  "why": { "title": "Neden Boykot?", "error": "Gerekçeler yüklenemedi." },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Personalize your experience.",
-    "appearance": "Appearance",
-    "appearanceSubtitle": "Switch between light and dark themes.",
-    "language": "Language",
-    "languageSubtitle": "Choose your preferred language.",
-    "theme": { "light": "Light", "dark": "Dark", "system": "System" }
+    "title": "Ayarlar",
+    "subtitle": "Deneyiminizi kişiselleştirin.",
+    "appearance": "Görünüm",
+    "appearanceSubtitle": "Açık ve koyu temalar arasında geçiş yapın.",
+    "language": "Dil",
+    "languageSubtitle": "Tercih ettiğiniz dili seçin.",
+    "theme": { "light": "Açık", "dark": "Koyu", "system": "Sistem" }
   },
   "languages": {
-    "en": "English",
-    "ar": "Arabic",
-    "bn": "Bengali",
-    "es": "Spanish",
-    "fr": "French",
-    "id": "Indonesian",
-    "tr": "Turkish",
-    "ur": "Urdu"
+    "en": "İngilizce",
+    "ar": "Arapça",
+    "bn": "Bengalce",
+    "es": "İspanyolca",
+    "fr": "Fransızca",
+    "id": "Endonezce",
+    "tr": "Türkçe",
+    "ur": "Urduca"
   }
 }

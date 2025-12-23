@@ -1,34 +1,34 @@
 {
-  "app": { "title": "Yaqiin Boycott" },
-  "nav": { "products": "Products", "why": "Why Boycott?", "settings": "Settings" },
-  "common": { "retry": "Retry" },
-  "categories": { "error": "Failed to load categories" },
+  "app": { "title": "يقين للمقاطعة" },
+  "nav": { "products": "المنتجات", "why": "لماذا نقاطع؟", "settings": "الإعدادات" },
+  "common": { "retry": "إعادة المحاولة" },
+  "categories": { "error": "فشل تحميل التصنيفات" },
   "products": {
-    "alternatives": "Alternatives:",
-    "noAlternatives": "No suggested alternatives yet.",
-    "noProducts": "No products found.",
-    "noProductsCategory": "No products found in this category.",
-    "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "alternatives": "البدائل:",
+    "noAlternatives": "لا توجد بدائل مقترحة بعد.",
+    "noProducts": "لم يتم العثور على منتجات.",
+    "noProductsCategory": "لا توجد منتجات في هذه الفئة.",
+    "loadMore": "تحميل المزيد",
+    "errorPrefix": "تعذّر تحميل المنتجات."
   },
-  "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
+  "why": { "title": "لماذا نقاطع؟", "error": "تعذّر تحميل الأسباب." },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Personalize your experience.",
-    "appearance": "Appearance",
-    "appearanceSubtitle": "Switch between light and dark themes.",
-    "language": "Language",
-    "languageSubtitle": "Choose your preferred language.",
-    "theme": { "light": "Light", "dark": "Dark", "system": "System" }
+    "title": "الإعدادات",
+    "subtitle": "خصص تجربتك.",
+    "appearance": "المظهر",
+    "appearanceSubtitle": "تبديل بين الوضع الفاتح والداكن.",
+    "language": "اللغة",
+    "languageSubtitle": "اختر لغتك المفضلة.",
+    "theme": { "light": "فاتح", "dark": "داكن", "system": "النظام" }
   },
   "languages": {
-    "en": "English",
-    "ar": "Arabic",
-    "bn": "Bengali",
-    "es": "Spanish",
-    "fr": "French",
-    "id": "Indonesian",
-    "tr": "Turkish",
-    "ur": "Urdu"
+    "en": "الإنجليزية",
+    "ar": "العربية",
+    "bn": "البنغالية",
+    "es": "الإسبانية",
+    "fr": "الفرنسية",
+    "id": "الإندونيسية",
+    "tr": "التركية",
+    "ur": "الأردية"
   }
 }
