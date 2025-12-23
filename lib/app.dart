@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_translate/flutter_easy_translate.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart' as http;
 
 import 'core/api/api_service.dart';
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var localizationDelegate = LocalizedApp.of(context).delegate;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -49,13 +52,24 @@ class MyApp extends StatelessWidget {
           create: (_) => WhyCubit(repository: _whyRepository)..loadReasons(),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Boycott',
-        theme: AppTheme.light(),
-        darkTheme: AppTheme.dark(),
-        themeMode: ThemeMode.dark,
-        home: const MyHomePage(title: 'Yaqiin Boycott'),
+      child: LocalizationProvider(
+        state: LocalizationProvider.of(context).state,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Boycott',
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            localizationDelegate,
+          ],
+          supportedLocales: localizationDelegate.supportedLocales,
+          locale: localizationDelegate.currentLocale,
+          theme: AppTheme.light(),
+          darkTheme: AppTheme.dark(),
+          themeMode: ThemeMode.dark,
+          home: const MyHomePage(title: 'Yaqiin Boycott'),
+        ),
       ),
     );
   }
