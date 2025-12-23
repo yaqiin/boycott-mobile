@@ -24,46 +24,37 @@ class WhyBoycottPage extends StatelessWidget {
         }
 
         if (state is WhyLoaded) {
-          return LayoutBuilder(
-            builder: (context, constraints) {
-              final crossAxisCount = constraints.maxWidth >= 720 ? 2 : 1;
-              return CustomScrollView(
-                slivers: [
-                  SliverPadding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 16,
-                    ),
-                    sliver: SliverToBoxAdapter(
-                      child: Center(
-                        child: Text(
-                          'Why Boycott?',
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
+          return CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+                sliver: SliverToBoxAdapter(
+                  child: Center(
+                    child: Text(
+                      'Why Boycott?',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                  SliverPadding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    sliver: SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: crossAxisCount,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: constraints.maxWidth >= 720
-                            ? 1.9
-                            : 1.4,
-                      ),
-                      delegate: SliverChildBuilderDelegate((context, index) {
-                        final reason = state.reasons[index];
-                        return _ReasonCard(reason: reason);
-                      }, childCount: state.reasons.length),
-                    ),
-                  ),
-                ],
-              );
-            },
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final reason = state.reasons[index];
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: _ReasonCard(reason: reason),
+                    );
+                  }, childCount: state.reasons.length),
+                ),
+              ),
+            ],
           );
         }
 
@@ -93,12 +84,12 @@ class _ReasonCard extends StatelessWidget {
       ),
       elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -112,7 +103,7 @@ class _ReasonCard extends StatelessWidget {
                     size: 20,
                   ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Text(
                     reason.title,
@@ -123,7 +114,7 @@ class _ReasonCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 10),
             Text(reason.description, style: theme.textTheme.bodyMedium),
           ],
         ),
