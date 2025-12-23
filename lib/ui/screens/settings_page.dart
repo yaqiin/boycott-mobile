@@ -2,8 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  String _selectedLocale = 'en';
+
+  static const _supportedLocales = [
+    'en',
+    'ar',
+    'bn',
+    'es',
+    'fr',
+    'id',
+    'tr',
+    'ur',
+  ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final current = LocalizedApp.of(
+      context,
+    ).delegate.currentLocale.languageCode;
+    _selectedLocale = current;
+  }
+
+  Future<void> _onLocaleSelected(String code) async {
+    if (code == _selectedLocale) return;
+    await changeLocale(context, code);
+    setState(() => _selectedLocale = code);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +64,11 @@ class SettingsPage extends StatelessWidget {
             subtitle: translate('settings.appearanceSubtitle'),
             child: Row(
               children: const [
-                _ChoiceChip(label: 'settings.theme.light', selected: false),
+                _ChoiceChip(labelKey: 'settings.theme.light', selected: false),
                 SizedBox(width: 10),
-                _ChoiceChip(label: 'settings.theme.dark', selected: true),
+                _ChoiceChip(labelKey: 'settings.theme.dark', selected: true),
                 SizedBox(width: 10),
-                _ChoiceChip(label: 'settings.theme.system', selected: false),
+                _ChoiceChip(labelKey: 'settings.theme.system', selected: false),
               ],
             ),
           ),
@@ -46,16 +79,13 @@ class SettingsPage extends StatelessWidget {
             child: Wrap(
               spacing: 10,
               runSpacing: 8,
-              children: const [
-                _ChoiceChip(label: 'languages.en', selected: true),
-                _ChoiceChip(label: 'languages.ar', selected: false),
-                _ChoiceChip(label: 'languages.fr', selected: false),
-                _ChoiceChip(label: 'languages.es', selected: false),
-                _ChoiceChip(label: 'languages.id', selected: false),
-                _ChoiceChip(label: 'languages.tr', selected: false),
-                _ChoiceChip(label: 'languages.ur', selected: false),
-                _ChoiceChip(label: 'languages.bn', selected: false),
-              ],
+              children: _supportedLocales.map((code) {
+                return _ChoiceChip(
+                  labelKey: 'languages.$code',
+                  selected: _selectedLocale == code,
+                  onTap: () => _onLocaleSelected(code),
+                );
+              }).toList(),
             ),
           ),
         ],
@@ -139,35 +169,46 @@ class _SettingsCard extends StatelessWidget {
 }
 
 class _ChoiceChip extends StatelessWidget {
-  const _ChoiceChip({required this.label, required this.selected});
+  const _ChoiceChip({
+    required this.labelKey,
+    required this.selected,
+    this.onTap,
+  });
 
-  final String label;
+  final String labelKey;
   final bool selected;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: selected
-            ? theme.colorScheme.primary.withValues(alpha: 0.12)
-            : theme.cardColor.withValues(alpha: 0.7),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
+    final label = translate(labelKey);
+
+    return InkWell(
+      borderRadius: BorderRadius.circular(24),
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
           color: selected
-              ? theme.colorScheme.primary
-              : theme.dividerColor.withValues(alpha: 0.3),
+              ? theme.colorScheme.primary.withValues(alpha: 0.12)
+              : theme.cardColor.withValues(alpha: 0.7),
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: selected
+                ? theme.colorScheme.primary
+                : theme.dividerColor.withValues(alpha: 0.3),
+          ),
         ),
-      ),
-      child: Text(
-        translate(label),
-        style: theme.textTheme.bodyMedium?.copyWith(
-          fontWeight: FontWeight.w600,
-          color: selected
-              ? theme.colorScheme.primary
-              : theme.colorScheme.onSurface,
+        child: Text(
+          label,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: selected
+                ? theme.colorScheme.primary
+                : theme.colorScheme.onSurface,
+          ),
         ),
       ),
     );
