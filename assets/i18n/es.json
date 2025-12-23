@@ -30,5 +30,12 @@
     "id": "Indonesio",
     "tr": "Turco",
     "ur": "Urdu"
+  },
+  "errors": {
+    "noConnection": "Sin conexión a Internet",
+    "noConnectionHint": "No se detectó conexión a Internet. Comprueba tu conexión e inténtalo de nuevo.",
+    "unknown": "Error desconocido",
+    "fetchFailed": "Ocurrió un problema al obtener los datos. Inténtalo de nuevo más tarde.",
+    "unexpectedResponse": "Respuesta inesperada del servidor. Inténtalo de nuevo más tarde."
   }
 }

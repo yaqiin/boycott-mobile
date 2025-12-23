@@ -30,5 +30,12 @@
     "id": "Indonésien",
     "tr": "Turc",
     "ur": "Ourdou"
+  },
+  "errors": {
+    "noConnection": "Pas de connexion Internet",
+    "noConnectionHint": "Aucune connexion Internet détectée. Vérifiez votre connexion et réessayez.",
+    "unknown": "Erreur inconnue",
+    "fetchFailed": "Un problème est survenu lors de la récupération des données. Veuillez réessayer plus tard.",
+    "unexpectedResponse": "Réponse inattendue du serveur. Veuillez réessayer plus tard."
   }
 }

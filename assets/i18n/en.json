@@ -30,5 +30,12 @@
     "id": "Indonesian",
     "tr": "Turkish",
     "ur": "Urdu"
+  },
+  "errors": {
+    "noConnection": "No internet connection",
+    "noConnectionHint": "No internet connection detected. Please check your connection and try again.",
+    "unknown": "Unknown error",
+    "fetchFailed": "Something went wrong while fetching data. Please try again later.",
+    "unexpectedResponse": "Unexpected response from the server. Please try again later."
   }
 }

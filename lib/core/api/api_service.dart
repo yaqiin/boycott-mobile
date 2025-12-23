@@ -30,10 +30,13 @@ class ApiService {
     final hasConnection = await _connectionChecker.hasInternetAccess;
     if (!hasConnection) {
       throw ApiException(
-        message: 'No internet connection',
+        message: _tr('errors.noConnection', 'No internet connection'),
         uri: uri,
         userFriendlyMessage:
-            'No internet connection detected. Please check your connection and try again.',
+            _tr(
+          'errors.noConnectionHint',
+          'No internet connection detected. Please check your connection and try again.',
+        ),
       );
     }
 
@@ -49,11 +52,16 @@ class ApiService {
     try {
       if (response.statusCode < 200 || response.statusCode >= 300) {
         throw ApiException(
-          message: response.body.isEmpty ? 'Unknown error' : response.body,
+          message: response.body.isEmpty
+              ? _tr('errors.unknown', 'Unknown error')
+              : response.body,
           uri: uri,
           statusCode: response.statusCode,
           userFriendlyMessage:
-              'Something went wrong while fetching data. Please try again later.',
+              _tr(
+            'errors.fetchFailed',
+            'Something went wrong while fetching data. Please try again later.',
+          ),
         );
       }
 
@@ -72,7 +80,10 @@ class ApiService {
         message: 'Failed to parse response: ${error.message}',
         uri: uri,
         userFriendlyMessage:
-            'Unexpected response from the server. Please try again later.',
+            _tr(
+          'errors.unexpectedResponse',
+          'Unexpected response from the server. Please try again later.',
+        ),
       );
     }
   }
@@ -96,8 +107,6 @@ class ApiService {
     );
   }
 
-  void close() => _client.close();
-
   String _currentLanguageCode() {
     try {
       final context = navigatorKey.currentContext;
@@ -107,4 +116,14 @@ class ApiService {
     } catch (_) {}
     return 'en';
   }
+
+  String _tr(String key, String fallback) {
+    try {
+      return translate(key);
+    } catch (_) {
+      return fallback;
+    }
+  }
+
+  void close() => _client.close();
 }

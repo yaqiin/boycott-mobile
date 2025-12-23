@@ -30,5 +30,12 @@
     "id": "Endonezce",
     "tr": "Türkçe",
     "ur": "Urduca"
+  },
+  "errors": {
+    "noConnection": "İnternet bağlantısı yok",
+    "noConnectionHint": "İnternet bağlantısı tespit edilmedi. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+    "unknown": "Bilinmeyen hata",
+    "fetchFailed": "Veri alınırken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.",
+    "unexpectedResponse": "Sunucudan beklenmeyen yanıt alındı. Lütfen daha sonra tekrar deneyin."
   }
 }

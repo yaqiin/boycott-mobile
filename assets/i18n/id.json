@@ -30,5 +30,12 @@
     "id": "Indonesia",
     "tr": "Turki",
     "ur": "Urdu"
+  },
+  "errors": {
+    "noConnection": "Tidak ada koneksi internet",
+    "noConnectionHint": "Tidak ada koneksi internet terdeteksi. Periksa koneksi Anda dan coba lagi.",
+    "unknown": "Kesalahan tidak dikenal",
+    "fetchFailed": "Terjadi masalah saat mengambil data. Silakan coba lagi nanti.",
+    "unexpectedResponse": "Respons server tidak terduga. Silakan coba lagi nanti."
   }
 }
