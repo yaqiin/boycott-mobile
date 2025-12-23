@@ -14,12 +14,10 @@ import 'features/why/data/repositories/why_repository.dart';
 import 'core/theme/theme_controller.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_page.dart';
-
-const String kApiBaseUrl =
-    "http://localhost:3000/"; //'https://boycott.api.yaqiin.org/';
+import 'core/constants/app_constants.dart';
 
 final ApiService _apiService = ApiService(
-  baseUrl: kApiBaseUrl,
+  baseUrl: AppConstants.apiBaseUrl,
   client: http.Client(),
 );
 
