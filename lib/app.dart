@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Boycott',
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
