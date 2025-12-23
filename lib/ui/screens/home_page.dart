@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 
 import '../../features/categories/cubit/categories_cubit.dart';
 import '../../features/products/cubit/products_cubit.dart';
@@ -41,21 +42,21 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
         },
-        destinations: const [
+        destinations: [
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
-            label: 'Products',
+            label: translate('nav.products'),
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.question_answer),
             icon: Icon(Icons.question_answer_outlined),
-            label: 'Why Boycott?',
+            label: translate('nav.why'),
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.settings),
             icon: Icon(Icons.settings_outlined),
-            label: 'Settings',
+            label: translate('nav.settings'),
           ),
         ],
       ),

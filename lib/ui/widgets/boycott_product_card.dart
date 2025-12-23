@@ -1,5 +1,6 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 
 import '../../models/boycott_company.dart';
 
@@ -70,7 +71,7 @@ class BoycottProductCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 14),
             child: Text(
-              'Alternatives:',
+              translate('products.alternatives'),
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w700,
               ),
@@ -80,7 +81,7 @@ class BoycottProductCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               child: Text(
-                'No suggested alternatives yet.',
+                translate('products.noAlternatives'),
                 style: theme.textTheme.bodyMedium,
               ),
             )

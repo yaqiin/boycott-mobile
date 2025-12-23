@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 
 import '../../features/categories/cubit/categories_cubit.dart';
 import '../../features/products/cubit/products_cubit.dart';
@@ -16,7 +17,8 @@ class ProductsPage extends StatelessWidget {
       builder: (context, categoriesState) {
         if (categoriesState is CategoriesFailure) {
           return _ErrorView(
-            message: categoriesState.message,
+            message:
+                '${translate('categories.error')}: ${categoriesState.message}',
             onRetry: () {
               context.read<CategoriesCubit>().fetchCategories();
               context.read<ProductsCubit>().loadProducts();
@@ -105,7 +107,7 @@ class _ProductsSection extends StatelessWidget {
         if (state is ProductsFailure) {
           final categoryId = state.categoryId;
           return _ErrorView(
-            message: 'Could not load products.\n${state.message}',
+            message: '${translate('products.errorPrefix')}\n${state.message}',
             onRetry: () {
               final filterId = (categoryId?.isEmpty ?? true)
                   ? null
@@ -119,8 +121,8 @@ class _ProductsSection extends StatelessWidget {
         if (state is ProductsSuccess) {
           if (state.products.isEmpty) {
             final message = state.categoryId == null
-                ? 'No products found.'
-                : 'No products found in this category.';
+                ? translate('products.noProducts')
+                : translate('products.noProductsCategory');
             return Center(child: Text(message));
           }
 
@@ -163,7 +165,7 @@ class _ProductsSection extends StatelessWidget {
                       OutlinedButton(
                         onPressed: () =>
                             context.read<ProductsCubit>().loadMore(),
-                        child: const Text('Load more'),
+                        child: Text(translate('products.loadMore')),
                       ),
                   ],
                 ),
@@ -195,7 +197,10 @@ class _ErrorView extends StatelessWidget {
             child: Text(message, textAlign: TextAlign.center),
           ),
           const SizedBox(height: 12),
-          ElevatedButton(onPressed: onRetry, child: const Text('Retry')),
+          ElevatedButton(
+            onPressed: onRetry,
+            child: Text(translate('common.retry')),
+          ),
         ],
       ),
     );

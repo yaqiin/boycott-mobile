@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         state: LocalizationProvider.of(context).state,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Boycott',
+          title: translate('app.title'),
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeMode.dark,
-          home: const MyHomePage(title: 'Yaqiin Boycott'),
+          home: MyHomePage(title: translate('app.title')),
         ),
       ),
     );

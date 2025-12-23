@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../features/why/cubit/why_cubit.dart';
@@ -18,7 +19,7 @@ class WhyBoycottPage extends StatelessWidget {
 
         if (state is WhyFailure) {
           return _ErrorView(
-            message: state.message,
+            message: '${translate('why.error')}\n${state.message}',
             onRetry: () => context.read<WhyCubit>().loadReasons(),
           );
         }
@@ -34,7 +35,7 @@ class WhyBoycottPage extends StatelessWidget {
                 sliver: SliverToBoxAdapter(
                   child: Center(
                     child: Text(
-                      'Why Boycott?',
+                      translate('why.title'),
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
@@ -160,7 +161,10 @@ class _ErrorView extends StatelessWidget {
             child: Text(message, textAlign: TextAlign.center),
           ),
           const SizedBox(height: 12),
-          ElevatedButton(onPressed: onRetry, child: const Text('Retry')),
+          ElevatedButton(
+            onPressed: onRetry,
+            child: Text(translate('common.retry')),
+          ),
         ],
       ),
     );

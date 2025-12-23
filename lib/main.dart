@@ -4,6 +4,7 @@ import 'app.dart';
 import 'core/localization/translate_preferences.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   var delegate = await LocalizationDelegate.create(
     fallbackLocale: 'en',
     supportedLocales: ['en', 'ar', 'bn', 'es', 'fr', 'id', 'tr', 'ur'],
