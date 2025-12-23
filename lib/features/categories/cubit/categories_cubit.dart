@@ -14,12 +14,14 @@ class CategoriesCubit extends Cubit<CategoriesState> {
 
   final CategoriesRepository _categoriesRepository;
 
-  Future<void> fetchCategories() async {
+  Future<void> fetchCategories({bool clearSelection = false}) async {
     final previousState = state;
     emit(const CategoriesLoading());
     try {
       final categories = await _categoriesRepository.fetchCategories();
-      final previousSelected = previousState is CategoriesLoaded
+      final previousSelected = clearSelection
+          ? null
+          : previousState is CategoriesLoaded
           ? previousState.selectedCategoryId
           : null;
       final selectedId = categories.any((c) => c.id == previousSelected)

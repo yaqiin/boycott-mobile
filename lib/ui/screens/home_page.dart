@@ -29,7 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
         onDestinationSelected: (index) {
           setState(() => _selectedIndex = index);
           if (index == 0) {
-            context.read<CategoriesCubit>().fetchCategories();
+            context.read<CategoriesCubit>().fetchCategories(
+              clearSelection: true,
+            );
             context.read<ProductsCubit>().loadProducts(
               categoryId:
                   context.read<CategoriesCubit>().state is CategoriesLoaded
