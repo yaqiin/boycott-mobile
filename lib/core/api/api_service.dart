@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter_easy_translate/flutter_easy_translate.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
+import '../../app.dart';
 import 'api_exception.dart';
 
 class ApiService {
@@ -38,6 +41,7 @@ class ApiService {
     final response = await _client.get(
       uri,
       headers: {
+        'Accept-Language': _currentLanguageCode(),
         if (defaultHeaders != null) ...defaultHeaders!,
         if (headers != null) ...headers,
       },
@@ -94,4 +98,14 @@ class ApiService {
   }
 
   void close() => _client.close();
+
+  String _currentLanguageCode() {
+    try {
+      final context = navigatorKey.currentContext;
+      if (context != null) {
+        return LocalizedApp.of(context).delegate.currentLocale.languageCode;
+      }
+    } catch (_) {}
+    return 'en';
+  }
 }

@@ -29,6 +29,7 @@ final CategoriesRepository _categoriesRepository = CategoriesRepository(
   apiService: _apiService,
 );
 final WhyRepository _whyRepository = WhyRepository(apiService: _apiService);
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: translate('app.title'),
+          navigatorKey: navigatorKey,
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
