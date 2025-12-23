@@ -11,6 +11,7 @@ import 'features/products/cubit/products_cubit.dart';
 import 'features/products/data/repositories/products_repository.dart';
 import 'features/why/cubit/why_cubit.dart';
 import 'features/why/data/repositories/why_repository.dart';
+import 'core/theme/theme_controller.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_page.dart';
 
@@ -30,9 +31,12 @@ final CategoriesRepository _categoriesRepository = CategoriesRepository(
 );
 final WhyRepository _whyRepository = WhyRepository(apiService: _apiService);
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+late ThemeController themeController;
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.themeController});
+
+  final ThemeController themeController;
 
   @override
   Widget build(BuildContext context) {
@@ -55,22 +59,30 @@ class MyApp extends StatelessWidget {
       ],
       child: LocalizationProvider(
         state: LocalizationProvider.of(context).state,
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: translate('app.title'),
-          navigatorKey: navigatorKey,
-          localizationsDelegates: [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            localizationDelegate,
-          ],
-          supportedLocales: localizationDelegate.supportedLocales,
-          locale: localizationDelegate.currentLocale,
-          theme: AppTheme.light(),
-          darkTheme: AppTheme.dark(),
-          themeMode: ThemeMode.dark,
-          home: MyHomePage(title: translate('app.title')),
+        child: ThemeControllerProvider(
+          controller: themeController,
+          child: AnimatedBuilder(
+            animation: themeController,
+            builder: (context, _) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: translate('app.title'),
+                navigatorKey: navigatorKey,
+                localizationsDelegates: [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  localizationDelegate,
+                ],
+                supportedLocales: localizationDelegate.supportedLocales,
+                locale: localizationDelegate.currentLocale,
+                theme: AppTheme.light(),
+                darkTheme: AppTheme.dark(),
+                themeMode: themeController.themeMode,
+                home: MyHomePage(title: translate('app.title')),
+              );
+            },
+          ),
         ),
       ),
     );

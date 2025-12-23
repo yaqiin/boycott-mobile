@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 import 'app.dart';
 import 'core/localization/translate_preferences.dart';
+import 'core/theme/theme_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,5 +11,6 @@ void main() async {
     supportedLocales: ['en', 'ar', 'bn', 'es', 'fr', 'id', 'tr', 'ur'],
     preferences: TranslatePreferences(),
   );
-  runApp(LocalizedApp(delegate, const MyApp()));
+  themeController = await ThemeController.load();
+  runApp(LocalizedApp(delegate, MyApp(themeController: themeController)));
 }

@@ -32,8 +32,7 @@ class ApiService {
       throw ApiException(
         message: _tr('errors.noConnection', 'No internet connection'),
         uri: uri,
-        userFriendlyMessage:
-            _tr(
+        userFriendlyMessage: _tr(
           'errors.noConnectionHint',
           'No internet connection detected. Please check your connection and try again.',
         ),
@@ -57,8 +56,7 @@ class ApiService {
               : response.body,
           uri: uri,
           statusCode: response.statusCode,
-          userFriendlyMessage:
-              _tr(
+          userFriendlyMessage: _tr(
             'errors.fetchFailed',
             'Something went wrong while fetching data. Please try again later.',
           ),
@@ -79,8 +77,7 @@ class ApiService {
       throw ApiException(
         message: 'Failed to parse response: ${error.message}',
         uri: uri,
-        userFriendlyMessage:
-            _tr(
+        userFriendlyMessage: _tr(
           'errors.unexpectedResponse',
           'Unexpected response from the server. Please try again later.',
         ),

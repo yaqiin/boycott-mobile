@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../core/theme/theme_controller.dart';
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -11,6 +13,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   String _selectedLocale = 'en';
+  ThemeMode _selectedTheme = ThemeMode.dark;
 
   static const _supportedLocales = [
     'en',
@@ -30,12 +33,19 @@ class _SettingsPageState extends State<SettingsPage> {
       context,
     ).delegate.currentLocale.languageCode;
     _selectedLocale = current;
+    _selectedTheme = ThemeControllerProvider.of(context).themeMode;
   }
 
   Future<void> _onLocaleSelected(String code) async {
     if (code == _selectedLocale) return;
     await changeLocale(context, code);
     setState(() => _selectedLocale = code);
+  }
+
+  Future<void> _onThemeSelected(ThemeMode mode) async {
+    if (mode == _selectedTheme) return;
+    await ThemeControllerProvider.of(context).setThemeMode(mode);
+    setState(() => _selectedTheme = mode);
   }
 
   @override
@@ -63,12 +73,24 @@ class _SettingsPageState extends State<SettingsPage> {
             title: translate('settings.appearance'),
             subtitle: translate('settings.appearanceSubtitle'),
             child: Row(
-              children: const [
-                _ChoiceChip(labelKey: 'settings.theme.light', selected: false),
+              children: [
+                _ChoiceChip(
+                  labelKey: 'settings.theme.light',
+                  selected: _selectedTheme == ThemeMode.light,
+                  onTap: () => _onThemeSelected(ThemeMode.light),
+                ),
                 SizedBox(width: 10),
-                _ChoiceChip(labelKey: 'settings.theme.dark', selected: true),
+                _ChoiceChip(
+                  labelKey: 'settings.theme.dark',
+                  selected: _selectedTheme == ThemeMode.dark,
+                  onTap: () => _onThemeSelected(ThemeMode.dark),
+                ),
                 SizedBox(width: 10),
-                _ChoiceChip(labelKey: 'settings.theme.system', selected: false),
+                _ChoiceChip(
+                  labelKey: 'settings.theme.system',
+                  selected: _selectedTheme == ThemeMode.system,
+                  onTap: () => _onThemeSelected(ThemeMode.system),
+                ),
               ],
             ),
           ),
