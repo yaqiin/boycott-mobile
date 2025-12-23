@@ -4,6 +4,7 @@ import 'package:flutter_easy_translate/flutter_easy_translate.dart';
 
 import '../../features/categories/cubit/categories_cubit.dart';
 import '../../features/products/cubit/products_cubit.dart';
+import '../../features/why/cubit/why_cubit.dart';
 import 'products_page.dart';
 import 'settings_page.dart';
 import 'why_boycott_page.dart';
@@ -66,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildPage(int index) {
     switch (index) {
       case 1:
+        context.read<WhyCubit>().loadReasons();
         return const WhyBoycottPage();
       case 2:
         return const SettingsPage();
