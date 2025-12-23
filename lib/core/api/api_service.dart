@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_easy_translate/flutter_easy_translate.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
