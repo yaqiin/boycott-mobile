@@ -16,7 +16,6 @@ class ProductsSuccess extends ProductsState {
     required this.categoryId,
     this.isLoadingMore = false,
     this.loadMoreError,
-    this.searchTerm = '',
   });
 
   final List<BoycottCompany> products;
@@ -25,19 +24,6 @@ class ProductsSuccess extends ProductsState {
   final String? categoryId;
   final bool isLoadingMore;
   final String? loadMoreError;
-  final String searchTerm;
-
-  List<BoycottCompany> get filteredProducts {
-    if (searchTerm.isEmpty) return products;
-    final searchLower = searchTerm.toLowerCase();
-    return products.where((product) {
-      final nameMatch = product.name.toLowerCase().contains(searchLower);
-      final alternativesMatch = product.alternatives?.any(
-        (alt) => alt.name.toLowerCase().contains(searchLower),
-      ) ?? false;
-      return nameMatch || alternativesMatch;
-    }).toList();
-  }
 
   ProductsSuccess copyWith({
     List<BoycottCompany>? products,
@@ -45,7 +31,6 @@ class ProductsSuccess extends ProductsState {
     bool? hasNextPage,
     bool? isLoadingMore,
     Object? loadMoreError = _sentinel,
-    String? searchTerm,
   }) {
     return ProductsSuccess(
       products: products ?? this.products,
@@ -56,7 +41,6 @@ class ProductsSuccess extends ProductsState {
       loadMoreError: identical(loadMoreError, _sentinel)
           ? this.loadMoreError
           : loadMoreError as String?,
-      searchTerm: searchTerm ?? this.searchTerm,
     );
   }
 

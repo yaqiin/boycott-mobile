@@ -5,9 +5,17 @@ class ProductSearchWidget extends StatelessWidget {
   const ProductSearchWidget({
     super.key,
     required this.onSearch,
+    this.onTap,
+    this.readOnly = false,
+    this.onTapOutside,
+    this.autoFocus = false,
   });
 
   final ValueChanged<String> onSearch;
+  final VoidCallback? onTap;
+  final bool readOnly;
+  final bool autoFocus;
+  final void Function(PointerDownEvent)? onTapOutside;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,13 @@ class ProductSearchWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
+        readOnly: readOnly,
         onChanged: onSearch,
+        onTap: onTap,
+        autofocus: autoFocus,
         decoration: InputDecoration(
           hintText: translate('products.searchPlaceholder'),
           prefixIcon: Icon(
@@ -29,22 +43,15 @@ class ProductSearchWidget extends StatelessWidget {
               : theme.colorScheme.surfaceContainerHighest,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: theme.colorScheme.outlineVariant,
-            ),
+            borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: theme.colorScheme.outlineVariant,
-            ),
+            borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: theme.colorScheme.primary,
-              width: 2,
-            ),
+            borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
           ),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
@@ -55,4 +62,3 @@ class ProductSearchWidget extends StatelessWidget {
     );
   }
 }
-
