@@ -4,12 +4,14 @@
   "common": { "retry": "পুনরায় চেষ্টা করুন" },
   "categories": { "error": "ক্যাটাগরি লোড করা যায়নি" },
   "products": {
+    "searchPlaceholder": "একটি পণ্য অনুসন্ধান করুন",
     "alternatives": "বিকল্প:",
     "noAlternatives": "এখনও কোনো প্রস্তাবিত বিকল্প নেই।",
     "noProducts": "কোনো পণ্য পাওয়া যায়নি।",
     "noProductsCategory": "এই ক্যাটাগরিতে কোনো পণ্য নেই।",
     "loadMore": "আরও দেখুন",
-    "errorPrefix": "পণ্য লোড করা যায়নি।"
+    "errorPrefix": "পণ্য লোড করা যায়নি।",
+    "searchPlaceholder": "পণ্য খুঁজুন..."
   },
   "why": { "title": "কেন বয়কট?", "error": "কারণগুলো লোড করা যায়নি।" },
   "settings": {
@@ -37,5 +39,9 @@
     "unknown": "অজানা ত্রুটি",
     "fetchFailed": "ডেটা আনতে সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।",
     "unexpectedResponse": "সার্ভার থেকে অপ্রত্যাশিত প্রতিক্রিয়া। পরে আবার চেষ্টা করুন।"
+  },
+  "search": {
+    "title": "অনুসন্ধান",
+    "startTyping": "পণ্য খুঁজতে টাইপ শুরু করুন"
   }
 }

@@ -13,11 +13,15 @@ class ProductsRepository {
   Future<ProductPage> fetchProducts({
     required int page,
     String? categoryId,
+    String? name,
   }) async {
     final query = <String, dynamic>{'page': page};
 
     if (categoryId != null && categoryId.isNotEmpty) {
       query['category_id'] = categoryId;
+    }
+    if (name != null && name.isNotEmpty) {
+      query['name'] = name;
     }
 
     final response = await apiService.get(productsPath, queryParameters: query);

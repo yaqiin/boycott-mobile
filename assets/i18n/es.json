@@ -4,12 +4,14 @@
   "common": { "retry": "Reintentar" },
   "categories": { "error": "No se pudieron cargar las categorías" },
   "products": {
+    "searchPlaceholder": "Buscar un producto",
     "alternatives": "Alternativas:",
     "noAlternatives": "Aún no hay alternativas sugeridas.",
     "noProducts": "No se encontraron productos.",
     "noProductsCategory": "No se encontraron productos en esta categoría.",
     "loadMore": "Cargar más",
-    "errorPrefix": "No se pudieron cargar los productos."
+    "errorPrefix": "No se pudieron cargar los productos.",
+    "searchPlaceholder": "Buscar productos..."
   },
   "why": { "title": "¿Por qué boicotear?", "error": "No se pudieron cargar los motivos." },
   "settings": {
@@ -37,5 +39,9 @@
     "unknown": "Error desconocido",
     "fetchFailed": "Ocurrió un problema al obtener los datos. Inténtalo de nuevo más tarde.",
     "unexpectedResponse": "Respuesta inesperada del servidor. Inténtalo de nuevo más tarde."
+  },
+  "search": {
+    "title": "Buscar",
+    "startTyping": "Empieza a escribir para buscar productos"
   }
 }

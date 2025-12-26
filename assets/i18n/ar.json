@@ -4,12 +4,14 @@
   "common": { "retry": "إعادة المحاولة" },
   "categories": { "error": "فشل تحميل التصنيفات" },
   "products": {
+    "searchPlaceholder": "ابحث عن منتج",
     "alternatives": "البدائل:",
     "noAlternatives": "لا توجد بدائل مقترحة بعد.",
     "noProducts": "لم يتم العثور على منتجات.",
     "noProductsCategory": "لا توجد منتجات في هذه الفئة.",
     "loadMore": "تحميل المزيد",
-    "errorPrefix": "تعذّر تحميل المنتجات."
+    "errorPrefix": "تعذّر تحميل المنتجات.",
+    "searchPlaceholder": "البحث عن المنتجات..."
   },
   "why": { "title": "لماذا نقاطع؟", "error": "تعذّر تحميل الأسباب." },
   "settings": {
@@ -37,5 +39,9 @@
     "unknown": "خطأ غير معروف",
     "fetchFailed": "حدث خطأ أثناء جلب البيانات. يرجى المحاولة لاحقًا.",
     "unexpectedResponse": "استجابة غير متوقعة من الخادم. يرجى المحاولة لاحقًا."
+  },
+  "search": {
+    "title": "البحث",
+    "startTyping": "ابدأ بالكتابة للبحث عن المنتجات"
   }
 }

@@ -4,12 +4,14 @@
   "common": { "retry": "Retry" },
   "categories": { "error": "Failed to load categories" },
   "products": {
+    "searchPlaceholder": "Search a product",
     "alternatives": "Alternatives:",
     "noAlternatives": "No suggested alternatives yet.",
     "noProducts": "No products found.",
     "noProductsCategory": "No products found in this category.",
     "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "errorPrefix": "Could not load products.",
+    "searchPlaceholder": "Search products..."
   },
   "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
   "settings": {
@@ -37,5 +39,9 @@
     "unknown": "Unknown error",
     "fetchFailed": "Something went wrong while fetching data. Please try again later.",
     "unexpectedResponse": "Unexpected response from the server. Please try again later."
+  },
+  "search": {
+    "title": "Search",
+    "startTyping": "Start typing to search products"
   }
 }

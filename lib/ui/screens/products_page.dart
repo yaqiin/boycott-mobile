@@ -7,6 +7,8 @@ import '../../features/products/cubit/products_cubit.dart';
 import '../widgets/boycott_product_card.dart';
 import '../widgets/loading_categories_widget.dart';
 import '../widgets/loading_products_widget.dart';
+import 'search_page.dart';
+import '../widgets/product_search_widget.dart';
 
 class ProductsPage extends StatelessWidget {
   const ProductsPage({super.key});
@@ -29,12 +31,31 @@ class ProductsPage extends StatelessWidget {
         return const Column(
           children: [
             SizedBox(height: 12),
+            _ProductSearch(),
+            SizedBox(height: 12),
             _CategoryFilter(),
             SizedBox(height: 12),
             Expanded(child: _ProductsSection()),
           ],
         );
       },
+    );
+  }
+}
+
+class _ProductSearch extends StatelessWidget {
+  const _ProductSearch();
+
+  @override
+  Widget build(BuildContext context) {
+    return ProductSearchWidget(
+      readOnly: true,
+      onTap: () {
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (_) => const SearchPage()));
+      },
+      onSearch: (_) {},
     );
   }
 }

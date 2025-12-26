@@ -39,47 +39,56 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var localizationDelegate = LocalizedApp.of(context).delegate;
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(
-          create: (_) =>
-              CategoriesCubit(categoriesRepository: _categoriesRepository)
-                ..fetchCategories(),
+        RepositoryProvider<ProductsRepository>.value(value: _productsRepository),
+        RepositoryProvider<CategoriesRepository>.value(
+          value: _categoriesRepository,
         ),
-        BlocProvider(
-          create: (_) =>
-              ProductsCubit(productsRepository: _productsRepository)
-                ..loadProducts(),
-        ),
-        BlocProvider(
-          create: (_) => WhyCubit(repository: _whyRepository)..loadReasons(),
-        ),
+        RepositoryProvider<WhyRepository>.value(value: _whyRepository),
       ],
-      child: LocalizationProvider(
-        state: LocalizationProvider.of(context).state,
-        child: ThemeControllerProvider(
-          controller: themeController,
-          child: AnimatedBuilder(
-            animation: themeController,
-            builder: (context, _) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: translate('app.title'),
-                navigatorKey: navigatorKey,
-                localizationsDelegates: [
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                  localizationDelegate,
-                ],
-                supportedLocales: localizationDelegate.supportedLocales,
-                locale: localizationDelegate.currentLocale,
-                theme: AppTheme.light(),
-                darkTheme: AppTheme.dark(),
-                themeMode: themeController.themeMode,
-                home: MyHomePage(title: translate('app.title')),
-              );
-            },
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) =>
+                CategoriesCubit(categoriesRepository: _categoriesRepository)
+                  ..fetchCategories(),
+          ),
+          BlocProvider(
+            create: (_) =>
+                ProductsCubit(productsRepository: _productsRepository)
+                  ..loadProducts(),
+          ),
+          BlocProvider(
+            create: (_) => WhyCubit(repository: _whyRepository)..loadReasons(),
+          ),
+        ],
+        child: LocalizationProvider(
+          state: LocalizationProvider.of(context).state,
+          child: ThemeControllerProvider(
+            controller: themeController,
+            child: AnimatedBuilder(
+              animation: themeController,
+              builder: (context, _) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: translate('app.title'),
+                  navigatorKey: navigatorKey,
+                  localizationsDelegates: [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                    localizationDelegate,
+                  ],
+                  supportedLocales: localizationDelegate.supportedLocales,
+                  locale: localizationDelegate.currentLocale,
+                  theme: AppTheme.light(),
+                  darkTheme: AppTheme.dark(),
+                  themeMode: themeController.themeMode,
+                  home: MyHomePage(title: translate('app.title')),
+                );
+              },
+            ),
           ),
         ),
       ),

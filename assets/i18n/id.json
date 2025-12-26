@@ -4,12 +4,14 @@
   "common": { "retry": "Coba lagi" },
   "categories": { "error": "Gagal memuat kategori" },
   "products": {
+    "searchPlaceholder": "Cari produk",
     "alternatives": "Alternatif:",
     "noAlternatives": "Belum ada alternatif yang disarankan.",
     "noProducts": "Produk tidak ditemukan.",
     "noProductsCategory": "Tidak ada produk dalam kategori ini.",
     "loadMore": "Muat lebih banyak",
-    "errorPrefix": "Gagal memuat produk."
+    "errorPrefix": "Gagal memuat produk.",
+    "searchPlaceholder": "Cari produk..."
   },
   "why": { "title": "Mengapa Boikot?", "error": "Alasan tidak dapat dimuat." },
   "settings": {
@@ -37,5 +39,9 @@
     "unknown": "Kesalahan tidak dikenal",
     "fetchFailed": "Terjadi masalah saat mengambil data. Silakan coba lagi nanti.",
     "unexpectedResponse": "Respons server tidak terduga. Silakan coba lagi nanti."
+  },
+  "search": {
+    "title": "Cari",
+    "startTyping": "Mulai mengetik untuk mencari produk"
   }
 }
