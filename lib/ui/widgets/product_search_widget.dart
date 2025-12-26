@@ -29,6 +29,7 @@ class ProductSearchWidget extends StatelessWidget {
         },
         readOnly: readOnly,
         onChanged: onSearch,
+        onSubmitted: onSearch,
         onTap: onTap,
         autofocus: autoFocus,
         decoration: InputDecoration(
@@ -51,7 +52,10 @@ class ProductSearchWidget extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
+            borderSide: BorderSide(
+              color: readOnly ? Colors.transparent : theme.colorScheme.primary,
+              width: 2,
+            ),
           ),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,

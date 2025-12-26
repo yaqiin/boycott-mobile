@@ -4,6 +4,7 @@
   "common": { "retry": "Yeniden dene" },
   "categories": { "error": "Kategoriler yüklenemedi" },
   "products": {
+    "searchPlaceholder": "Bir ürün ara",
     "alternatives": "Alternatifler:",
     "noAlternatives": "Henüz önerilen alternatif yok.",
     "noProducts": "Ürün bulunamadı.",
@@ -38,5 +39,9 @@
     "unknown": "Bilinmeyen hata",
     "fetchFailed": "Veri alınırken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.",
     "unexpectedResponse": "Sunucudan beklenmeyen yanıt alındı. Lütfen daha sonra tekrar deneyin."
+  },
+  "search": {
+    "title": "Ara",
+    "startTyping": "Ürün aramak için yazmaya başlayın"
   }
 }

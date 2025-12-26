@@ -4,6 +4,7 @@
   "common": { "retry": "Coba lagi" },
   "categories": { "error": "Gagal memuat kategori" },
   "products": {
+    "searchPlaceholder": "Cari produk",
     "alternatives": "Alternatif:",
     "noAlternatives": "Belum ada alternatif yang disarankan.",
     "noProducts": "Produk tidak ditemukan.",
@@ -38,5 +39,9 @@
     "unknown": "Kesalahan tidak dikenal",
     "fetchFailed": "Terjadi masalah saat mengambil data. Silakan coba lagi nanti.",
     "unexpectedResponse": "Respons server tidak terduga. Silakan coba lagi nanti."
+  },
+  "search": {
+    "title": "Cari",
+    "startTyping": "Mulai mengetik untuk mencari produk"
   }
 }

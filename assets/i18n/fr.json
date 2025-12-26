@@ -4,6 +4,7 @@
   "common": { "retry": "Réessayer" },
   "categories": { "error": "Échec du chargement des catégories" },
   "products": {
+    "searchPlaceholder": "Rechercher un produit",
     "alternatives": "Alternatives :",
     "noAlternatives": "Aucune alternative suggérée pour le moment.",
     "noProducts": "Aucun produit trouvé.",
@@ -38,5 +39,9 @@
     "unknown": "Erreur inconnue",
     "fetchFailed": "Un problème est survenu lors de la récupération des données. Veuillez réessayer plus tard.",
     "unexpectedResponse": "Réponse inattendue du serveur. Veuillez réessayer plus tard."
+  },
+  "search": {
+    "title": "Recherche",
+    "startTyping": "Commencez à taper pour rechercher des produits"
   }
 }
