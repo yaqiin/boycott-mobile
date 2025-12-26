@@ -64,13 +64,25 @@ class ProductsCubit extends Cubit<ProductsState> {
     }
   }
 
+  void updateSearchTerm(String searchTerm) {
+    final currentState = state;
+    if (currentState is ProductsSuccess) {
+      emit(currentState.copyWith(searchTerm: searchTerm));
+    }
+  }
+
   ProductsSuccess _successFromPage(ProductPage page, String? categoryId) {
+    final currentState = state;
+    final previousSearchTerm = currentState is ProductsSuccess
+        ? currentState.searchTerm
+        : '';
     return ProductsSuccess(
       products: page.products,
       currentPage: page.page,
       hasNextPage: page.hasNextPage,
       categoryId: categoryId,
       isLoadingMore: false,
+      searchTerm: previousSearchTerm,
     );
   }
 }

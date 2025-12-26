@@ -9,7 +9,8 @@
     "noProducts": "No se encontraron productos.",
     "noProductsCategory": "No se encontraron productos en esta categoría.",
     "loadMore": "Cargar más",
-    "errorPrefix": "No se pudieron cargar los productos."
+    "errorPrefix": "No se pudieron cargar los productos.",
+    "searchPlaceholder": "Buscar productos..."
   },
   "why": { "title": "¿Por qué boicotear?", "error": "No se pudieron cargar los motivos." },
   "settings": {

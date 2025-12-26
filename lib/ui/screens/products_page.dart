@@ -7,6 +7,7 @@ import '../../features/products/cubit/products_cubit.dart';
 import '../widgets/boycott_product_card.dart';
 import '../widgets/loading_categories_widget.dart';
 import '../widgets/loading_products_widget.dart';
+import '../widgets/product_search_widget.dart';
 
 class ProductsPage extends StatelessWidget {
   const ProductsPage({super.key});
@@ -29,11 +30,26 @@ class ProductsPage extends StatelessWidget {
         return const Column(
           children: [
             SizedBox(height: 12),
+            _ProductSearch(),
+            SizedBox(height: 12),
             _CategoryFilter(),
             SizedBox(height: 12),
             Expanded(child: _ProductsSection()),
           ],
         );
+      },
+    );
+  }
+}
+
+class _ProductSearch extends StatelessWidget {
+  const _ProductSearch();
+
+  @override
+  Widget build(BuildContext context) {
+    return ProductSearchWidget(
+      onSearch: (searchTerm) {
+        context.read<ProductsCubit>().updateSearchTerm(searchTerm);
       },
     );
   }
@@ -119,26 +135,28 @@ class _ProductsSection extends StatelessWidget {
         }
 
         if (state is ProductsSuccess) {
-          if (state.products.isEmpty) {
+          final filteredProducts = state.filteredProducts;
+          final theme = Theme.of(context);
+          final showLoadMoreRow =
+              state.hasNextPage ||
+              state.isLoadingMore ||
+              state.loadMoreError != null;
+          
+          if (filteredProducts.isEmpty && !showLoadMoreRow) {
             final message = state.categoryId == null
                 ? translate('products.noProducts')
                 : translate('products.noProductsCategory');
             return Center(child: Text(message));
           }
 
-          final theme = Theme.of(context);
-          final showLoadMoreRow =
-              state.hasNextPage ||
-              state.isLoadingMore ||
-              state.loadMoreError != null;
-          final itemCount = state.products.length + (showLoadMoreRow ? 1 : 0);
+          final itemCount = filteredProducts.length + (showLoadMoreRow ? 1 : 0);
 
           return ListView.builder(
             padding: const EdgeInsets.all(16),
             itemCount: itemCount,
             itemBuilder: (context, index) {
-              if (index < state.products.length) {
-                final company = state.products[index];
+              if (index < filteredProducts.length) {
+                final company = filteredProducts[index];
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: BoycottProductCard(company: company),

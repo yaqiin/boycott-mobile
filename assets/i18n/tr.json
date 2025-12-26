@@ -9,7 +9,8 @@
     "noProducts": "Ürün bulunamadı.",
     "noProductsCategory": "Bu kategoride ürün bulunamadı.",
     "loadMore": "Daha fazla yükle",
-    "errorPrefix": "Ürünler yüklenemedi."
+    "errorPrefix": "Ürünler yüklenemedi.",
+    "searchPlaceholder": "Ürün ara..."
   },
   "why": { "title": "Neden Boykot?", "error": "Gerekçeler yüklenemedi." },
   "settings": {

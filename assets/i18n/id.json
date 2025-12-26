@@ -9,7 +9,8 @@
     "noProducts": "Produk tidak ditemukan.",
     "noProductsCategory": "Tidak ada produk dalam kategori ini.",
     "loadMore": "Muat lebih banyak",
-    "errorPrefix": "Gagal memuat produk."
+    "errorPrefix": "Gagal memuat produk.",
+    "searchPlaceholder": "Cari produk..."
   },
   "why": { "title": "Mengapa Boikot?", "error": "Alasan tidak dapat dimuat." },
   "settings": {

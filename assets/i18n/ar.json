@@ -9,7 +9,8 @@
     "noProducts": "لم يتم العثور على منتجات.",
     "noProductsCategory": "لا توجد منتجات في هذه الفئة.",
     "loadMore": "تحميل المزيد",
-    "errorPrefix": "تعذّر تحميل المنتجات."
+    "errorPrefix": "تعذّر تحميل المنتجات.",
+    "searchPlaceholder": "البحث عن المنتجات..."
   },
   "why": { "title": "لماذا نقاطع؟", "error": "تعذّر تحميل الأسباب." },
   "settings": {

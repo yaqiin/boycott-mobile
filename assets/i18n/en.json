@@ -9,7 +9,8 @@
     "noProducts": "No products found.",
     "noProductsCategory": "No products found in this category.",
     "loadMore": "Load more",
-    "errorPrefix": "Could not load products."
+    "errorPrefix": "Could not load products.",
+    "searchPlaceholder": "Search products..."
   },
   "why": { "title": "Why Boycott?", "error": "Could not load reasons." },
   "settings": {

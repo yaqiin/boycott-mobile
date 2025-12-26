@@ -9,7 +9,8 @@
     "noProducts": "কোনো পণ্য পাওয়া যায়নি।",
     "noProductsCategory": "এই ক্যাটাগরিতে কোনো পণ্য নেই।",
     "loadMore": "আরও দেখুন",
-    "errorPrefix": "পণ্য লোড করা যায়নি।"
+    "errorPrefix": "পণ্য লোড করা যায়নি।",
+    "searchPlaceholder": "পণ্য খুঁজুন..."
   },
   "why": { "title": "কেন বয়কট?", "error": "কারণগুলো লোড করা যায়নি।" },
   "settings": {

@@ -4,12 +4,13 @@
   "common": { "retry": "Réessayer" },
   "categories": { "error": "Échec du chargement des catégories" },
   "products": {
-    "alternatives": "Alternatives :",
+    "alternatives": "Alternatives :",
     "noAlternatives": "Aucune alternative suggérée pour le moment.",
     "noProducts": "Aucun produit trouvé.",
     "noProductsCategory": "Aucun produit trouvé dans cette catégorie.",
     "loadMore": "Charger plus",
-    "errorPrefix": "Impossible de charger les produits."
+    "errorPrefix": "Impossible de charger les produits.",
+    "searchPlaceholder": "Rechercher des produits..."
   },
   "why": { "title": "Pourquoi boycotter ?", "error": "Impossible de charger les raisons." },
   "settings": {
