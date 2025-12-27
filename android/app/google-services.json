@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1048710613638",
+    "project_id": "yaqiin-boycott-42294",
+    "storage_bucket": "yaqiin-boycott-42294.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048710613638:android:f42d4dee39e7380c4bdf07",
+        "android_client_info": {
+          "package_name": "org.yaqiin.boycott"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz8LFgXDc4GlZ4aCl03-StGp5pyZV6KY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
