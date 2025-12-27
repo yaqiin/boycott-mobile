@@ -13,7 +13,7 @@ class ThemeController extends ChangeNotifier {
   static Future<ThemeController> load() async {
     final prefs = await SharedPreferences.getInstance();
     final stored = prefs.getString(_prefKey);
-    final mode = _fromString(stored) ?? ThemeMode.dark;
+    final mode = _fromString(stored) ?? ThemeMode.light;
     return ThemeController._(mode);
   }
 
