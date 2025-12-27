@@ -46,3 +46,6 @@ app.*.map.json
 
 # Agents instructions files
 agents.md
+
+# Context files
+.context/
